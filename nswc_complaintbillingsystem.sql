@@ -2,10 +2,10 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 09, 2022 at 09:41 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- Host: localhost
+-- Generation Time: Oct 13, 2022 at 12:32 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `nswc_complaintbillingsystem`
 --
+CREATE DATABASE IF NOT EXISTS `nswc_complaintbillingsystem` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `nswc_complaintbillingsystem`;
 
 -- --------------------------------------------------------
 
@@ -27,12 +29,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `administrator`
 --
 
-CREATE TABLE `administrator` (
+DROP TABLE IF EXISTS `administrator`;
+CREATE TABLE IF NOT EXISTS `administrator` (
   `administratorId` varchar(25) NOT NULL,
   `administratorName` varchar(80) NOT NULL,
   `contact` varchar(15) NOT NULL,
   `email` varchar(70) DEFAULT NULL,
-  `administratorPassword` varchar(30) NOT NULL
+  `administratorPassword` varchar(30) NOT NULL,
+  PRIMARY KEY (`administratorId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -57,7 +61,8 @@ INSERT INTO `administrator` (`administratorId`, `administratorName`, `contact`, 
 -- Table structure for table `billing`
 --
 
-CREATE TABLE `billing` (
+DROP TABLE IF EXISTS `billing`;
+CREATE TABLE IF NOT EXISTS `billing` (
   `meterNo` varchar(30) NOT NULL,
   `clientNo` varchar(30) NOT NULL,
   `units` varchar(35) NOT NULL,
@@ -65,7 +70,9 @@ CREATE TABLE `billing` (
   `readingDate` date NOT NULL,
   `previousReading` varchar(100) NOT NULL,
   `curentReading` varchar(90) NOT NULL,
-  `paymentMethod` varchar(30) NOT NULL
+  `paymentMethod` varchar(30) NOT NULL,
+  PRIMARY KEY (`meterNo`),
+  KEY `clientNo` (`clientNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -74,11 +81,13 @@ CREATE TABLE `billing` (
 -- Table structure for table `branch`
 --
 
-CREATE TABLE `branch` (
+DROP TABLE IF EXISTS `branch`;
+CREATE TABLE IF NOT EXISTS `branch` (
   `branchNo` varchar(30) NOT NULL,
   `branchName` varchar(60) NOT NULL,
   `location` varchar(70) NOT NULL,
-  `address` varchar(65) NOT NULL
+  `address` varchar(65) NOT NULL,
+  PRIMARY KEY (`branchNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -86,6 +95,7 @@ CREATE TABLE `branch` (
 --
 
 INSERT INTO `branch` (`branchNo`, `branchName`, `location`, `address`) VALUES
+('123', 'Bqwnh', 'ugandan', 'lakjdfiksdf'),
 ('BR01', 'Soroti NWSC-Branch', 'Otichopi', 'P.O.BOX 014 Moroto RD'),
 ('BR02', 'Kampala NWSC-Branch', 'Nakasero', 'P.O.BOX 013 Buganda RD'),
 ('BR03', 'Moroto NWSC-Branch', 'Kooli Street', 'P.O.BOX 100 Kooli RD'),
@@ -103,7 +113,8 @@ INSERT INTO `branch` (`branchNo`, `branchName`, `location`, `address`) VALUES
 -- Table structure for table `client`
 --
 
-CREATE TABLE `client` (
+DROP TABLE IF EXISTS `client`;
+CREATE TABLE IF NOT EXISTS `client` (
   `clientNo` varchar(30) NOT NULL,
   `clientName` varchar(60) NOT NULL,
   `District` varchar(40) NOT NULL,
@@ -111,7 +122,8 @@ CREATE TABLE `client` (
   `Location` varchar(70) NOT NULL,
   `plotNo` varchar(30) NOT NULL,
   `cPassword` varchar(30) NOT NULL,
-  `email` varchar(50) DEFAULT NULL
+  `email` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`clientNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -119,6 +131,7 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`clientNo`, `clientName`, `District`, `Zone`, `Location`, `plotNo`, `cPassword`, `email`) VALUES
+('752742', 'dsfghsdfgh', 'dsfgsdfg', 'dsfhdsfg', 'dsfghdsfg', 'dsfghsdg', 'Sensy@gg.com', '122323434'),
 ('C0001', 'Angodo Francis', 'Soroti', 'Madera', 'Soroti East', 'P680', '#festline.', 'francisangodo@gmail.com'),
 ('C0002', 'Twebaze Evas', 'Kagadi', 'Muhorro', 'Buyaga West', 'P146', '#Eva@12.com?.', 'evastwebaze@gmail.com'),
 ('C0003', 'Nassaka Specioza', 'Wakiso', 'Bbuye', 'Naalya', 'P1230', '!cheryl:', 'nspeyy@gmail.com'),
@@ -136,14 +149,24 @@ INSERT INTO `client` (`clientNo`, `clientName`, `District`, `Zone`, `Location`, 
 -- Table structure for table `complaintform`
 --
 
-CREATE TABLE `complaintform` (
+DROP TABLE IF EXISTS `complaintform`;
+CREATE TABLE IF NOT EXISTS `complaintform` (
   `complaintNo` varchar(30) NOT NULL,
   `date` date NOT NULL,
   `staffId` varchar(20) NOT NULL,
   `resolution` varchar(150) NOT NULL,
   `status` varchar(80) NOT NULL,
-  `compliantType` varchar(100) NOT NULL
+  `compliantType` varchar(100) NOT NULL,
+  PRIMARY KEY (`complaintNo`),
+  KEY `staffId` (`staffId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `complaintform`
+--
+
+INSERT INTO `complaintform` (`complaintNo`, `date`, `staffId`, `resolution`, `status`, `compliantType`) VALUES
+('123', '2022-09-29', '001', 'jubadfk', 'jbsdjf', 'compliantType');
 
 -- --------------------------------------------------------
 
@@ -151,57 +174,25 @@ CREATE TABLE `complaintform` (
 -- Table structure for table `staff`
 --
 
-CREATE TABLE `staff` (
+DROP TABLE IF EXISTS `staff`;
+CREATE TABLE IF NOT EXISTS `staff` (
   `staffId` varchar(20) NOT NULL,
   `staffName` varchar(60) NOT NULL,
   `dob` date NOT NULL,
   `phone` varchar(20) NOT NULL,
   `address` varchar(70) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `position` varchar(80) NOT NULL
+  `position` varchar(80) NOT NULL,
+  PRIMARY KEY (`staffId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `staff`
 --
 
---
--- Indexes for table `administrator`
---
-ALTER TABLE `administrator`
-  ADD PRIMARY KEY (`administratorId`);
-
---
--- Indexes for table `billing`
---
-ALTER TABLE `billing`
-  ADD PRIMARY KEY (`meterNo`),
-  ADD KEY `clientNo` (`clientNo`);
-
---
--- Indexes for table `branch`
---
-ALTER TABLE `branch`
-  ADD PRIMARY KEY (`branchNo`);
-
---
--- Indexes for table `client`
---
-ALTER TABLE `client`
-  ADD PRIMARY KEY (`clientNo`);
-
---
--- Indexes for table `complaintform`
---
-ALTER TABLE `complaintform`
-  ADD PRIMARY KEY (`complaintNo`),
-  ADD KEY `staffId` (`staffId`);
-
---
--- Indexes for table `staff`
---
-ALTER TABLE `staff`
-  ADD PRIMARY KEY (`staffId`);
+INSERT INTO `staff` (`staffId`, `staffName`, `dob`, `phone`, `address`, `email`, `position`) VALUES
+('001', 'Okello', '2002-10-09', '078552462', 'Kampala, Uganda', 'okello@gmail.com', 'Manager'),
+('002', 'Opiyo', '2022-10-05', '12318616', 'Kampala', 'opio@gmail.com', 'Accountant');
 
 --
 -- Constraints for dumped tables
