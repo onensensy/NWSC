@@ -6,7 +6,7 @@ include("nswc_connect.php");
 
 if(isset($_POST['submit'])){
 
-$adminstratorId  = $_POST["adminstratorId "];
+$adminstratorId  = $_POST["adminstratorId"];
 $adminstratorName = $_POST["adminstratorName"];
 $contact = $_POST["contact"];
 $email = $_POST["email"];
@@ -19,7 +19,8 @@ echo $email."<br>";
 echo $adminstratorPassword."<br>";
 
 //$insert_query = "INSERT INTO adminstrator (adminstratorId,adminstratorName,contact,email,adminstratorPassword)VALUES('$adminstratorId','$adminstratorName','$contact','$email', '$adminstratorPassword')";
-	$insert_query = "select * from adminstrator where adminstratorId = $adminstratorId ";
+
+$insert_query = "SELECT * from adminstrator where adminstratorId = $adminstratorId ";
 
 //mysqli_query($mysql,$sql)
 //$execute_query = mysqli_query($connect,$insert_query);
@@ -32,7 +33,7 @@ echo $adminstratorPassword."<br>";
 	$result = mysqli_query($con, $insert_query);
 	$num = mysqli_num_row($result);
 	
-	if($num ==1){
+	if($num > 1){
 		
 		echo "exists";
 	} else
@@ -40,7 +41,12 @@ echo $adminstratorPassword."<br>";
 		$sql  = "INSERT INTO adminstrator (adminstratorId,adminstratorName,contact,email,adminstratorPassword) VALUES ('$adminstratorId','$adminstratorName','$contact','$email', '$adminstratorPassword')";
 		
 		mysqli_query($con,$sql);
-		
+
+	if($execute_query==TRUE){
 		echo "user added";
+    }else{
+     echo mysqli_error($con);
+    }
 	}
+}
 ?>

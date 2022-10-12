@@ -23,14 +23,12 @@ echo $cPassword."<br>";
 
 $insert_query = "INSERT INTO client VALUES('$clientNo', '$clientName', '$District', '$Zone', '$Location', '$plotNo', '$email', '$cPassword')";
 
-mysqli_query($mysql,$sql)
-$execute_query=mysqli_query($connect,$insert_query);
+$execute_query=mysqli_query($con,$insert_query);
      if($execute_query==TRUE){
       echo "Data Submitted";
      }
-	else{
-      echo mysqli_error($connect);
+     else{
+      echo mysqli_error($con);
      }
 }
 ?>
-

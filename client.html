@@ -1,112 +1,125 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Untitled Document</title>
-<style type="text/css">
-<!--
-.style1 {font-size: 50px}
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Untitled Document</title>
+    <style type="text/css">
+    < !-- .style1 {
+        font-size: 50px
+    }
 
-ul{
-    list-style: none;
-   
-}
+    ul {
+        list-style: none;
 
-ul li a{
-    text-decoration: none;
-	color: aliceblue;
-     
-}
-ul li{
-    display: inline-block;
-    border-right: 1px solid #333;
-   margin-left:  20px;
-    padding-right: 30px;
-    font-size: 30px;
-    
-}
--->
-</style>
+    }
+
+    ul li a {
+        text-decoration: none;
+        color: aliceblue;
+
+    }
+
+    ul li {
+        display: inline-block;
+        border-right: 1px solid #333;
+        margin-left: 20px;
+        padding-right: 30px;
+        font-size: 30px;
+
+    }
+
+    -->
+    </style>
 </head>
 
 <body>
-<h1 align="center"><img src="logoo.jpeg" height="90px">NSWC BILLS COMPLAINT SYSTEMs</h1>
-<div align="center" style="background: #0A1172">
-        
-                   <ul>
-                    <li>Home</li>
-                    <li><a href="aboutus.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="faqs.html">FAQs</a></li> 
-                        
-          </ul>
-</div>
-<form id="form1" name="form1" method="post" action="">
-  <table width="500" align="center" cellpadding="10px">
-    <tr>
-      <td colspan="2" bgcolor="0000ff"  ><h1>Cleint's Details</h1></td>
-    </tr>
-   <tr>
-	   <td width="197" align="right"><strong>clientNo</strong></td>
-      <td width="300"><label>
-        <input type="text" name="clientNo" size="50" />
-      </label></td>
-    </tr>
-    <tr>
-		<td width="197" align="right"><strong>clientName</strong></td>
-     <td width="300"><label>
-        <input type="text" name="clientName" size="50"/>
-      </label></td>
-    </tr>
-    <tr>
-		<td width="197" align="right"><strong>District</strong></td>
-      <td width="300"> <input type="text" name="District" size="50"/></td>
-    </tr>
-    <tr>
-      <td width="197" align="right"><strong>Zone</strong></td>
-      <td  width="300"><span class="style1">
-        <label>
-        <input type="text" name="Zone" size="50"/>
-        </label>
-      </span></td>
-    </tr>
-    <tr>
-      <td><div align="right"><strong>Location</strong></div></td>
-      <td  width="300"><span class="style1">
-        <label>
-        <input type="text" name="Location" size="50"/>
-        </label>
-      </span></td>
-    </tr>
-    
-    <tr>
-      <td><div align="right"><strong>plotNo</strong></div></td>
-      <td  width="300"><span class="style1">
-        <label>
-        <input type="text" name="plotNo" size="50" />
-        </label>
-      </span></td>
-    </tr>
-    <tr>
-      <td><div align="right"><strong>email</strong></div></td>
-      <td  width="300"><span class="style1">
-        <label>
-        <input type="text" name="email" size="50"/>
-        </label>
-      </span></td>
-    </tr>
-    <tr>
-      <td><div align="right"><strong>cpassword</strong></div></td>
-      <td  width="300"><span class="style1">
-        <label>
-        <input type="password" name="cPassword" size="50"/>
-        </label>
-      </span></td>
-    </tr>
-	  
-	  <tr><td bgcolor="0000ff"><input type="reset" name="rest" value="reset" /> </td>
-		  <td bgcolor="0000ff"><input name="submit" type="submit" id="submit" value="Submit" /></td></tr>
-  </table>
-</form>
+    <h1 align="center"><img src="logoo.jpeg" height="90px">NSWC BILLS COMPLAINT SYSTEMs</h1>
+    <div align="center" style="background: #0A1172">
+        <ul>
+            <li>Home</li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+        </ul>
+    </div>
+    <form id="form1" name="form1" method="post" action="client.php">
+        <table width="500" align="center" cellpadding="10px">
+            <tr>
+                <td colspan="2" bgcolor="0000ff">
+                    <h1>Cleint's Details</h1>
+                </td>
+            </tr>
+            <tr>
+                <td width="197" align="right"><strong>clientNo</strong></td>
+                <td width="300"><label>
+                        <input type="text" name="clientNo" size="50" />
+                    </label></td>
+            </tr>
+            <tr>
+                <td width="197" align="right"><strong>clientName</strong></td>
+                <td width="300"><label>
+                        <input type="text" name="clientName" size="50" />
+                    </label></td>
+            </tr>
+            <tr>
+                <td width="197" align="right"><strong>District</strong></td>
+                <td width="300"> <input type="text" name="District" size="50" /></td>
+            </tr>
+            <tr>
+                <td width="197" align="right"><strong>Zone</strong></td>
+                <td width="300"><span class="style1">
+                        <label>
+                            <input type="text" name="Zone" size="50" />
+                        </label>
+                    </span></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="right"><strong>Location</strong></div>
+                </td>
+                <td width="300"><span class="style1">
+                        <label>
+                            <input type="text" name="Location" size="50" />
+                        </label>
+                    </span></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="right"><strong>plotNo</strong></div>
+                </td>
+                <td width="300"><span class="style1">
+                        <label>
+                            <input type="text" name="plotNo" size="50" />
+                        </label>
+                    </span></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="right"><strong>email</strong></div>
+                </td>
+                <td width="300"><span class="style1">
+                        <label>
+                            <input type="text" name="email" size="50" />
+                        </label>
+                    </span></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="right"><strong>cpassword</strong></div>
+                </td>
+                <td width="300"><span class="style1">
+                        <label>
+                            <input type="password" name="cPassword" size="50" />
+                        </label>
+                    </span></td>
+            </tr>
+            <tr>
+                <td bgcolor="0000ff"><input type="reset" name="rest" value="reset" /> </td>
+                <td bgcolor="0000ff"><input name="submit" type="submit" id="submit" value="Submit" /></td>
+            </tr>
+        </table>
+    </form>
 </body>
+
 </html>
