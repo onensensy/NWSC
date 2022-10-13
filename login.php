@@ -2,7 +2,7 @@
 if (isset($_GET['userType'])) {
     // code...
 
-$userType=$_GET['userType'];
+$_SESSION['userType']=$_GET['userType'];
 }
 
 include("nswc_connect.php");
@@ -10,7 +10,7 @@ include("nswc_connect.php");
     if(isset($_POST['signin'])){
         if($_POST['email'] != "" || $_POST['password'] != ""){
 
-            $email = $_POST['email'];
+         /*   $email = $_POST['email'];
             $password = $_POST['password'];
                 if ($usertype=='Admin') {
 
@@ -36,23 +36,18 @@ include("nswc_connect.php");
             // Store data in session variables
                 $_SESSION["loggedin"] = true;
                 $_SESSION["username"] = $username;
-                $_SESSION['userType'] = $usertype;
+                $_SESSION['userType'] = $usertype;*/
 
-                if ($_SESSION['userType']=='Admin') {
+                if ($_SESSION['userType']='Admin') {
                 header("location: ./report.php");
                     
-                }elseif ($_SESSION['userType']=='client') {
+                }elseif ($_SESSION['userType']='client') {
                     // code...
-                header("location: ./report.html");
+                header("location: ./rport.html");
                 }else{
-                header("location: ./complain.html");
+                header("location: ./complain.php");
                 }
-            } else{
-                echo "
-                <script>alert('Invalid username or password')</script>
-                <script>window.location = 'login.php'</script>
-                ";
-            }
+            
         }else{
             echo "
                 <script>alert('Please complete the required field!')</script>

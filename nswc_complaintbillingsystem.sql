@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 13, 2022 at 12:32 AM
+-- Generation Time: Oct 13, 2022 at 12:26 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `nswc_complaintbillingsystem`
 --
-CREATE DATABASE IF NOT EXISTS `nswc_complaintbillingsystem` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `nswc_complaintbillingsystem`;
 
 -- --------------------------------------------------------
 
@@ -166,7 +164,10 @@ CREATE TABLE IF NOT EXISTS `complaintform` (
 --
 
 INSERT INTO `complaintform` (`complaintNo`, `date`, `staffId`, `resolution`, `status`, `compliantType`) VALUES
-('123', '2022-09-29', '001', 'jubadfk', 'jbsdjf', 'compliantType');
+('123', '2022-09-29', '001', 'jubadfk', 'Handled', 'On Call'),
+('124', '2022-10-22', '002', 'Deleted the work', 'Handled', 'Poor Customer Service'),
+('205', '2022-10-19', '001', '', 'Not Handled', 'The Work is too complicated'),
+('229', '2022-10-13', '002', 'Deleted the work', 'Handled', 'compliantType');
 
 -- --------------------------------------------------------
 
@@ -183,6 +184,7 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `address` varchar(70) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
   `position` varchar(80) NOT NULL,
+  `password` varchar(10) NOT NULL,
   PRIMARY KEY (`staffId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -190,9 +192,9 @@ CREATE TABLE IF NOT EXISTS `staff` (
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`staffId`, `staffName`, `dob`, `phone`, `address`, `email`, `position`) VALUES
-('001', 'Okello', '2002-10-09', '078552462', 'Kampala, Uganda', 'okello@gmail.com', 'Manager'),
-('002', 'Opiyo', '2022-10-05', '12318616', 'Kampala', 'opio@gmail.com', 'Accountant');
+INSERT INTO `staff` (`staffId`, `staffName`, `dob`, `phone`, `address`, `email`, `position`, `password`) VALUES
+('001', 'Okello', '2002-10-09', '078552462', 'Kampala, Uganda', 'okello@gmail.com', 'Manager', 'okello'),
+('002', 'Opiyo', '2022-10-05', '12318616', 'Kampala', 'opio@gmail.com', 'Accountant', 'opiyo');
 
 --
 -- Constraints for dumped tables
