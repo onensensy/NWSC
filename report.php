@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include("nswc_connect.php");
 
 $sql = "SELECT * from complaintform where status !='Handled'";
@@ -47,7 +49,9 @@ $result->execute();
                 <?php echo $item['compliantType']; ?>
             </td>
             <td>
+                <?php if ($_SESSION['userType']!="admin") {?>
                 <a href="resolve.php?complaintNo=<?php echo $item['complaintNo'] ?>"><button>Resolve</button></a>
+                <?php }?>
             </td>
         </tr>
         <hr>

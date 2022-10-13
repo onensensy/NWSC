@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include("nswc_connect.php");
 if(isset($_POST['submit'])){

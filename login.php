@@ -1,4 +1,10 @@
 <?php
+if (isset($_GET['userType'])) {
+    // code...
+
+$userType=$_GET['userType'];
+}
+
 include("nswc_connect.php");
 
     if(isset($_POST['signin'])){
@@ -6,9 +12,19 @@ include("nswc_connect.php");
 
             $email = $_POST['email'];
             $password = $_POST['password'];
+                if ($usertype=='Admin') {
+
+            $sql = "SELECT * FROM `administrator.php` WHERE `administratrId`= ? AND `administratorPassword`=? ";
+                
+                }elseif ($usertype=='client') {
+
+            $sql = "SELECT * FROM `staff` WHERE `staffID`= ? AND `password`=? ";
+                    
+                }else{
 
             $sql = "SELECT * FROM `client` WHERE `clientNo`= ? AND `cPassword`=? ";
 
+                }
             mysqli_query($con,$sql);
             $query = $conn->prepare($sql);
             $query->execute(array($email,$password));
@@ -18,11 +34,19 @@ include("nswc_connect.php");
             if($row > 0) {
 
             // Store data in session variables
-                $userId=$fetch['stuffId'];
                 $_SESSION["loggedin"] = true;
                 $_SESSION["username"] = $username;
+                $_SESSION['userType'] = $usertype;
 
+                if ($_SESSION['userType']=='Admin') {
+                header("location: ./report.php");
+                    
+                }elseif ($_SESSION['userType']=='client') {
+                    // code...
+                header("location: ./report.html");
+                }else{
                 header("location: ./complain.html");
+                }
             } else{
                 echo "
                 <script>alert('Invalid username or password')</script>
@@ -57,8 +81,9 @@ include("nswc_connect.php");
         <h2>Please login</h2>
         <form action="login.php" method="post" class="was-validated">
             <div class="mb-3 mt-3">
-                <label for="email" class="form-label">Account Number:</label><br>
-                <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required>
+                <input type="hidden" name="userType" value="<?php echo $userType?>">
+                <label for="Account" class="form-label">Account Number:</label><br>
+                <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email" required>
             </div>
             <div class="mb-3">
                 <label for="pwd" class="form-label">Password:</label><br>

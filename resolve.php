@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include("nswc_connect.php");
 $complaintNo =$_GET['complaintNo'];
 $sql = "SELECT * from complaintform where complaintNo ='$complaintNo'";

@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 include("nswc_connect.php");
 if(isset($_POST['submit'])){
 
@@ -44,6 +44,7 @@ $execute_query=mysqli_query($con,$insert_query);
 
 <body>
     <h1 align="center">NSWC BILLS COMPLAINT SYSTEM</h1>
+    <?php include 'linkbar.php';?>
     <form id="form1" name="form1" method="post" action="billing.php">
         <table width="500" border="1" align="center">
             <tr>
