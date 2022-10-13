@@ -35,42 +35,34 @@
 
 <body>
     <h1 align="center"><img src="logoo.jpeg" height="90px">NSWC BILLS COMPLAINT SYSTEMs</h1>
-    <div align="center" style="background: #0A1172">
-        <ul>
-            <li>Home</li>
-            <li><a href="aboutus.html">About Us</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="faqs.html">FAQs</a></li>
-        </ul>
-    </div>
     <form id="form1" name="form1" method="post" action="client.php">
         <table width="500" align="center" cellpadding="10px">
             <tr>
                 <td colspan="2" bgcolor="0000ff">
-                    <h1>Cleint's Details</h1>
+                    <h1>Client Registration</h1>
                 </td>
             </tr>
             <tr>
                 <td width="197" align="right"><strong>clientNo</strong></td>
                 <td width="300"><label>
-                        <input type="text" name="clientNo" size="50" />
+                        <input type="text" name="clientNo" size="50" required />
                     </label></td>
             </tr>
             <tr>
                 <td width="197" align="right"><strong>clientName</strong></td>
                 <td width="300"><label>
-                        <input type="text" name="clientName" size="50" />
+                        <input type="text" name="clientName" size="50" required />
                     </label></td>
             </tr>
             <tr>
                 <td width="197" align="right"><strong>District</strong></td>
-                <td width="300"> <input type="text" name="District" size="50" /></td>
+                <td width="300"> <input type="text" name="District" size="50" required /></td>
             </tr>
             <tr>
                 <td width="197" align="right"><strong>Zone</strong></td>
                 <td width="300"><span class="style1">
                         <label>
-                            <input type="text" name="Zone" size="50" />
+                            <input type="text" name="Zone" size="50" required />
                         </label>
                     </span></td>
             </tr>
@@ -80,7 +72,7 @@
                 </td>
                 <td width="300"><span class="style1">
                         <label>
-                            <input type="text" name="Location" size="50" />
+                            <input type="text" name="Location" size="50" required />
                         </label>
                     </span></td>
             </tr>
@@ -90,7 +82,7 @@
                 </td>
                 <td width="300"><span class="style1">
                         <label>
-                            <input type="text" name="plotNo" size="50" />
+                            <input type="text" name="plotNo" size="50" required />
                         </label>
                     </span></td>
             </tr>
@@ -100,7 +92,7 @@
                 </td>
                 <td width="300"><span class="style1">
                         <label>
-                            <input type="text" name="email" size="50" />
+                            <input type="text" name="email" size="50" required />
                         </label>
                     </span></td>
             </tr>
@@ -110,13 +102,16 @@
                 </td>
                 <td width="300"><span class="style1">
                         <label>
-                            <input type="password" name="cPassword" size="50" />
+                            <input type="password" name="cPassword" size="50" required />
                         </label>
                     </span></td>
             </tr>
             <tr>
                 <td bgcolor="0000ff"><input type="reset" name="rest" value="reset" /> </td>
                 <td bgcolor="0000ff"><input name="submit" type="submit" id="submit" value="Submit" /></td>
+            </tr>
+            <tr>
+                <center font-size="20px"><a href="login.php"><i>Login</i></a> instead</center>
             </tr>
         </table>
     </form>

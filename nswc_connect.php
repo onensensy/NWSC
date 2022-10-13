@@ -7,5 +7,8 @@ if (!$con){
 	die("cannot connect to the database");
 }
 
-//$connect = mysqli_connect($servername,$username,$password,$dbname) or die(mysqli_error());
+$conn = new PDO( 'mysql:host=localhost;dbname=nswc_complaintbillingsystem', 'root', '' );
+	if(!$conn){
+		die("Fatal Error: Connection Failed!");
+	}
 ?>
